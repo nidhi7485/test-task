@@ -61,7 +61,14 @@ const genereMoviewithSubtotals = async (req, res) => {
     for (var i = 0; i < gMovie.length - 1; i++) {
       if (subtotals[i].tconst === gMovie[i].tconst) {
         // console.log(subtotals.length, gMovie.length)
-        gMovie[i].numVotes = subtotals[i].numVotes
+        let temp = {
+          // ...gMovie[i],
+          numVotes: subtotals[i].numVotes,
+          primaryTitle: gMovie[i].primaryTitle,
+          genres: gMovie[i].genres,
+        }
+        // gMovie[i].numVotes = subtotals[i].numVotes
+        gMovie[i] = temp
       }
     }
     res.json({ gMovie })
